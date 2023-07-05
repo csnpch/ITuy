@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mali:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
+@import './reset.css';
+@import './animation.css';
+@import './_tailwind.css';
+
+
+/* Color variables */
+:root {
+  --color-base: #F6F6F6;
+  --color-base-green: #169A00;
+  --color-primary: #153456;
+  --color-soft-primary: #1a548e;
+  --color-text-secondary: #6D6D6D
+  
+  /* Old selected color */
+  /* --color-primary: #2E2A50; */
+  /* --color-soft-primary: #423C74; */
+}
+
+
+html, body {
+  background-color: var(--color-base);
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  font-weight: normal;
+}
+
+.font_kanit {
+  font-family: 'Kanit', sans-serif !important;
+}
+
+.font_mali {
+  font-family: 'Mali', sans-serif !important;
+}
+
+.font_mali_noti {
+  font-family: 'Mali', sans-serif !important;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.font_permanent {
+  font-family: 'Permanent Marker', sans-serif !important;
+}
+
+.font_handrawn {
+  font-family: 'Delicious Handrawn', sans-serif !important;
+}
+
+.logo-color {
+  color: #1A1A1A !important
+}
+
+.logo-color-dark {
+  color: white !important;
+}

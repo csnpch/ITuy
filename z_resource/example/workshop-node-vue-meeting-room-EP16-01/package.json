@@ -1,0 +1,26 @@
+{
+  "name": "node-vue-meeting-room-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:frontend": "cd Frontend && npm run serve",
+    "start:backend": "cd Backend && npm start",
+    "build:frontend": "cd Frontend && npm run build",
+    "build:backend": "node .",
+    "build": "npm run build:backend && npm run build:frontend",
+    "start:prod": "cd Published && npm run start:prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ttvone.visualstudio.com/Node_Vue_Meeting_Room_Workshop/_git/Node_Vue_Meeting_Room_Workshop"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^4.0.0",
+    "ncp": "^2.0.0"
+  }
+}

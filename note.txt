@@ -1,0 +1,38 @@
+roles:
+    role  
+    - null = รอการอนุมัติ 
+	- 0:member = สมาชิกกั่วไป
+	- 1:admin = ผู้ดูแล
+	- 2:chairman = ประธาน
+	- 3:secretary = เลขา
+	- 4:treasurer = เหรัญญิก
+	- 5:CEOs = ทีมบริหาร
+
+
+payments
+    
+    bill_id
+    // if null is mean user_id this pay for donate
+
+    status
+    - null:hold
+	- 0:callback
+	- 1:success
+	- 2:hold_check
+	- -1:donate
+	
+
+bills
+
+    status
+	- null:hold
+	- -1:cancel
+	- 1:appove
+	- 0:close
+
+
+transaction
+	status
+	- null:hold
+	- 1:appove
+	- -1:disapproval

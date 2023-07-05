@@ -1,0 +1,4 @@
+.container-auth {
+    @apply wh-full md:w-[28rem] mx-auto grid grid-rows-[14rem_1fr] 
+            md:grid-rows-[20rem_1fr] mt-0 md:mt-20
+}

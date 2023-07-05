@@ -1,0 +1,19 @@
+.container-nav {
+    @apply w-full select-none flex items-center justify-between h-16 bg-[color:var(--color-base)]
+}
+
+.container-sub-nav {
+    @apply w-full select-none 
+    grid grid-cols-[32px_1fr_32px] 
+    h-14 bg-primary
+}
+
+/* Navbar */
+.logo-nav {
+    @apply text-2xl md:text-xl text-white
+}
+
+.texts-nav {
+    @apply text-3xl md:text-2xl
+}
+

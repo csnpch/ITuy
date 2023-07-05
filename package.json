@@ -1,0 +1,14 @@
+{
+  "name": "ITuy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev:front": "cd ./web && yarn dev:full",
+    "dev:back": "cd ./api-gateway && yarn dev",
+    "dev:full": "start cmd /k yarn dev:front && yarn dev:back"
+  },
+  "dependencies": {
+    "react-pwa-install-prompt": "^1.0.5"
+  }
+}

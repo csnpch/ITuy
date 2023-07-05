@@ -1,0 +1,71 @@
+version: '3.4'
+
+services:
+
+  web:
+    image: frontend-web
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
+    ports:
+      - 4000:4000
+    networks:
+      - ituy_network
+
+
+
+  api-gateway:
+    image: backend-api-gateway
+    build:
+      context: .
+      dockerfile: ./api-gateway/Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ituy_server_data:/usr/src/ituy/uploads
+    networks:
+      - ituy_network
+    # environment:
+    #   ENVIRONMENT: 'production'
+    #   PATH_UPLOADS: '/usr/src/ituee/uploads'
+      
+
+
+  db:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: 'db_ituee332211'
+    networks:
+      - pgsite_network
+
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    restart: always
+    hostname: postgres
+    ports:
+      - '5050:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'postgres@domain.com'
+      PGADMIN_DEFAULT_PASSWORD: 'ituee332211'
+    networks:
+      - pgsite_network
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+
+
+
+networks:
+  pgsite_network:  # name network
+  ituy_network:
+
+volumes:
+  db_data:  # name volume
+  pgadmin_data:
+  ituy_server_data:

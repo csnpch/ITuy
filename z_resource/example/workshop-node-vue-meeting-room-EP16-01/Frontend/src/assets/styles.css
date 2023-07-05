@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit:300,400,600');
+html, body {
+    font-family: 'Kanit', sans-serif;
+}
+
+body {
+    background-color: #EEEEEE;
+}
+
+.card,
+.card-header,
+.form-control,
+.btn,
+.alert,
+.page-link,
+.modal-content,
+.fc-event {
+    border-radius: 0 !important;
+}
+
+.card {
+    border-color: #17A2B8;
+}
+
+.card-header {
+    background-color: #17A2B8;
+    color: #FFFFFF;
+}
+
+label {
+    color: #6C757D;
+    font-weight: 300;
+}
+
+.form-control,
+.alert {
+    font-weight: 300;
+}
+
+.alertify .ajs-header,
+.alertify .ajs-footer .ajs-buttons .ajs-button.ajs-ok {
+    color: #17A2B8;
+}
+
+.table th {
+    color: #525B62;
+    font-weight: 400;
+}
+.table td {
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: #525B62;
+    vertical-align: middle;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+.img-container {
+    width: 123px;
+    height: 69px;
+    border: solid 1px #ced4da;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+.img-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.pagination li.active .page-link {
+    background-color: #17A2B8;
+    border-color: #17A2B8;
+}
+.page-link,
+.page-link:hover,
+.page-link:focus {
+    color: #17A2B8;
+    box-shadow: none;
+}
+
+.layout > .container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.fullcarlendar h2 {
+    font-size: 26px;
+}
+
+.fc-event .fc-title,
+.fc-event .fc-time {
+    color: white;
+}
+
+.fc-event.allowed {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+
+
+/* For Mobile device */
+@media (max-width: 575.98px) {
+    .table-responsive .table th {
+        white-space: nowrap;
+    }
+    .no-wrap {
+        white-space: nowrap !important;
+    }
+}

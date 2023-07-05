@@ -1,0 +1,23 @@
+ITuy api-gateway
+
+Environment required (.env)
+- ENV                       eg. production|dev
+- SERVER_PORT               eg. 3000
+- FRONTEND_URL              eg. "*"  // cors
+- PUBLIC_URL                eg. https://ituy-api.com/page
+- SESSION_SECRET            eg. "ANY"
+- JWT_SECRET                any value
+- JWT_EXPIRES_IN            eg. 10d  // token expires 10 day
+- YEARS_HISTORICAL_DATA     eg. 6  // 6 year 
+# For email
+- MAIL_USERNAME=your_email
+- MAIL_PASSWORD=your_password
+
+
+// Data from database after query if u need data
+// data stay at .row[0] like example this
+// const client = await (await findById(id)).rows[0]
+
+
+// DATABASE
+// SET TIME ZONE 'Asia/Bangkok';
