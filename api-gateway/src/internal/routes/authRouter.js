@@ -17,6 +17,13 @@ router.post('/signIn',
 )
 
 
+router.post('/changePassword',
+    check('old_password').not().isEmpty().withMessage('is required'),
+    check('new_password').not().isEmpty().withMessage('is required'),
+    authController.changePassword
+)
+
+
 router.post('/requestAccount',
     check('username')
         .not().isEmpty().withMessage('is required')

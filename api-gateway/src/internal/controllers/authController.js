@@ -149,9 +149,43 @@ const verifyAuth = async (req, res) => {
 }
 
 
+const changePassword = async (req, res) => {
+    try {
+
+        req.validate()
+
+        const body = req.body
+
+        const result = await authService.changePassword(
+            req.client.id,
+            body.old_password,
+            body.new_password
+        )
+        if (result === 'client_pass_invalid') {
+            return res.status(401).json({
+                status: false,
+                status_tag: 'error',
+                message: 'รหัสผ่านเดิมไม่ถูกต้อง',
+                data: null
+            })
+        }
+
+        return res.status(200).json({
+            status: true,
+            status_tag: 'success',
+            message: 'เปลี่ยนรหัสผ่านสำเร็จ',
+            data: null
+        })
+
+    } catch (err) { res.error(err) }
+
+}
+
+
 module.exports = {
     authenSignIn,
     requestAccount,
     acceptAccount,
-    verifyAuth
+    verifyAuth,
+    changePassword
 }

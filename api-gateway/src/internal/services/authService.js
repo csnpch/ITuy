@@ -50,7 +50,39 @@ const createRequestAccount = async (username, section) => {
 } 
 
 
+const changePassword = async (client_id, old_password, new_password) => {
+
+    let client = await (await clientService.findByKey('id', client_id)).rows[0]
+
+    if (!await securify.passwordVerify(old_password, client.salt, client.password)) {
+        return 'old_password_invalid'
+    } else if (await securify.passwordVerify(new_password, client.salt, client.password)) {
+        return 'new_password_invalid'
+    }
+
+    const { password_encrypt, salt } = await securify.passwordCreate(new_password)
+
+    return await db.query(`
+        UPDATE
+            ${dbDict.tableNames.client}
+        SET
+            password = $1,
+            salt = $2
+        WHERE
+            id = $3
+        `, [
+            password_encrypt,
+            salt,
+            client_id
+        ]
+    )
+
+}
+
+
+
 module.exports = {
     createRequestAccount,
     verifySignIn,
+    changePassword,
 }
