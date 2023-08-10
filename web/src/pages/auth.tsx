@@ -64,8 +64,8 @@ export default function Auth() {
     const statusVerifyAuth = useSelector((state: RootState) => getStatusVerifyAuth(state))
 
     const [form, setForm] = useState<formAuthInterface>({
-        username: '6306021623333',
-        password: '6306021623333'
+        username: '',
+        password: ''
     })
     const randomBanner = useMemo(() => {
         return Math.round(Math.random() * 1)
@@ -160,7 +160,6 @@ export default function Auth() {
 
     useEffect(() => {
         scrollToBottom()
-        console.log('statusVerifyAuth', statusVerifyAuth)
         if (statusVerifyAuth) {
             router.push(routes.home.path)
         }

@@ -76,9 +76,6 @@ export default function Home() {
             { contextHolder }
 
 
-            <VerifyAuth />
-
-
             <ModalAskToAuth
                 statusAskToAuth={{
                     isOpen: modalAskToAuth,

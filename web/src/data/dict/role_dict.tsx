@@ -26,7 +26,7 @@ export const roles: rolesInterface = {
     },
     member: {
         slug: 'member',
-        name: 'ทั่วไป',
+        name: 'สมาชิก',
         level: 0
     },
     admin: {
@@ -61,7 +61,7 @@ export const roles: rolesInterface = {
 export const levels: (number|null)[]  = Object.values(roles).map((item) => item.level)
 
 
-export const getRoleNameByStatus = (status: number|null): string => {
+export const getRoleNameByStatus = (status: number|null|undefined): string => {
     switch (status) {
         case roles.guest.level:
             return roles.guest.name

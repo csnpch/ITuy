@@ -57,7 +57,6 @@ export default function AccordionReportTnx({
     const handleChangePage = async (page: number) => {
         try {
             const res: any = await TnxServices.getTnxAll(accessToken, page)
-            console.log('res', res)
             setPaginateTnx(res.data.pagination)
             setDataTnx(res.data.transactions)
         } catch (_: any) {

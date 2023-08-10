@@ -108,7 +108,12 @@ export default function DialogRequestAuth({
         <>
             <Dialog open={statusDialog.isOpen} onClose={() => statusDialog.setOpen(false)}>
                 <DialogTitle>
-                    <span className='font_kanit'>ขอเปิดใช้งานบัญชี</span>
+                    <p className='font_kanit'>
+                        ขอเปิดใช้งานบัญชี
+                        {/* <span className='text-sm pl-4 text-red-600 font-normal tracking-wide'>
+                            ( เฉพาะสาขา IT )
+                        </span> */}
+                    </p>
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText>

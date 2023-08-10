@@ -1,7 +1,7 @@
 roles:
     role  
     - null = รอการอนุมัติ 
-	- 0:member = สมาชิกกั่วไป
+	- 0:member = สมาชิก (ทั่วไป)
 	- 1:admin = ผู้ดูแล
 	- 2:chairman = ประธาน
 	- 3:secretary = เลขา

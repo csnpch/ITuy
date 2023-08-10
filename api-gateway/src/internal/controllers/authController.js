@@ -149,6 +149,51 @@ const verifyAuth = async (req, res) => {
 }
 
 
+const forceChangePassword = async (req, res) => {
+    try {
+
+        req.validate()
+
+        const role = req.client.role // data from verify token in session    
+        if (!dataRoles.levels.filter(item => 
+            item !== dataRoles.roles.guest.level
+            // && item !== dataRoles.roles.member.level
+            && item !== dataRoles.roles.treasurer.level
+            && item !== dataRoles.roles.CEOs.level
+        ).includes(role)) { // return [1, 2, 3, 4, 5]
+            return res.status(403).json({
+                status: false,
+                status_tag: 'warning',
+                message: 'คุณไม่มีสิทธิดำเนินการกระทำนี้',
+                data: null
+            })
+        }
+
+        const result = await authService.forceChangePassword(
+            req.body.username,
+            req.body.new_password
+        )
+        if (result === 'not_found_client') {
+            return res.status(404).json({
+                status: false,
+                status_tag: 'error',
+                message: 'ไม่พบบัญชีนี้',
+                data: null
+            })
+        }
+
+        return res.status(200).json({
+            status: true,
+            status_tag: 'success',
+            message: 'เปลี่ยนรหัสผ่านสำเร็จ',
+            data: null
+        })
+
+    } catch (err) { res.error(err) }
+
+}
+
+
 const changePassword = async (req, res) => {
     try {
 
@@ -161,7 +206,7 @@ const changePassword = async (req, res) => {
             body.old_password,
             body.new_password
         )
-        if (result === 'client_pass_invalid') {
+        if (result === 'old_password_invalid') {
             return res.status(401).json({
                 status: false,
                 status_tag: 'error',
@@ -187,5 +232,6 @@ module.exports = {
     requestAccount,
     acceptAccount,
     verifyAuth,
-    changePassword
+    changePassword,
+    forceChangePassword
 }

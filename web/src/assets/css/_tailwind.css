@@ -358,6 +358,10 @@
   margin-bottom: 0.75rem !important
 }
 
+.ml-4 {
+  margin-left: 1rem !important
+}
+
 .block {
   display: block !important
 }
@@ -1081,6 +1085,10 @@
   padding-bottom: 7rem !important
 }
 
+.pl-4 {
+  padding-left: 1rem !important
+}
+
 .text-left {
   text-align: left !important
 }
@@ -1389,6 +1397,11 @@
 .text-rose-700 {
   --tw-text-opacity: 1 !important;
   color: rgb(190 18 60 / var(--tw-text-opacity)) !important
+}
+
+.text-red-200 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(254 202 202 / var(--tw-text-opacity)) !important
 }
 
 .underline {

@@ -1,5 +1,7 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE "bill_dict"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "status" SMALLINT NOT NULL,
     "status_name" VARCHAR(40) NOT NULL,
     "description" TEXT NULL,
@@ -11,7 +13,7 @@ ALTER TABLE
 ALTER TABLE
     "bill_dict" ADD CONSTRAINT "bill_dict_status_unique" UNIQUE("status");
 CREATE TABLE "section_dict"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "sec" SMALLINT NOT NULL,
     "sec_name" VARCHAR(8) NOT NULL,
     "description" TEXT NULL,
@@ -23,7 +25,7 @@ ALTER TABLE
 ALTER TABLE
     "section_dict" ADD CONSTRAINT "section_dict_sec_unique" UNIQUE("sec");
 CREATE TABLE "bill"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "target" VARCHAR(14) NULL,
     "title" VARCHAR(120) NOT NULL,
     "description" TEXT NULL,
@@ -39,7 +41,7 @@ COMMENT
 ON COLUMN
     "bill"."target" IS 'should array varchar(40)[]';
 CREATE TABLE "payment_method"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "client_id" UUID NOT NULL,
     "target" VARCHAR(14) NULL,
     "method_identity" VARCHAR(200) NOT NULL,
@@ -55,7 +57,7 @@ COMMENT
 ON COLUMN
     "payment_method"."target" IS 'should array varchar(40)[]';
 CREATE TABLE "transaction_dict"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "status" SMALLINT NOT NULL,
     "status_name" VARCHAR(40) NOT NULL,
     "description" TEXT NULL,
@@ -67,7 +69,7 @@ ALTER TABLE
 ALTER TABLE
     "transaction_dict" ADD CONSTRAINT "transaction_dict_status_unique" UNIQUE("status");
 CREATE TABLE "client"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "email" VARCHAR(80) NULL,
     "nickname" VARCHAR(20) NULL,
     "fullname" VARCHAR(120) NULL,
@@ -84,7 +86,7 @@ CREATE TABLE "client"(
 ALTER TABLE
     "client" ADD PRIMARY KEY("id");
 CREATE TABLE "role_dict"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "role" SMALLINT NOT NULL,
     "role_name" VARCHAR(20) NOT NULL,
     "description" TEXT NULL,
@@ -96,7 +98,7 @@ ALTER TABLE
 ALTER TABLE
     "role_dict" ADD CONSTRAINT "role_dict_role_unique" UNIQUE("role");
 CREATE TABLE "transaction"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "client_id" UUID NOT NULL,
     "title" VARCHAR(120) NOT NULL,
     "description" TEXT NULL,
@@ -109,7 +111,7 @@ CREATE TABLE "transaction"(
 ALTER TABLE
     "transaction" ADD PRIMARY KEY("id");
 CREATE TABLE "payment"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "client_id" UUID NOT NULL,
     "bill_id" UUID NULL,
     "img_evidence" TEXT NOT NULL,
@@ -121,7 +123,7 @@ CREATE TABLE "payment"(
 ALTER TABLE
     "payment" ADD PRIMARY KEY("id");
 CREATE TABLE "vote"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "agree" VARCHAR(40) NULL,
     "disagree" VARCHAR(40) NULL,
     "deadline" VARCHAR(20) NOT NULL,
@@ -138,7 +140,7 @@ COMMENT
 ON COLUMN
     "vote"."disagree" IS 'should array varchar(40)[]';
 CREATE TABLE "payment_dict"(
-    "id" UUID NOT NULL DEFAULT 'uuid_generate_v4()',
+    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
     "status" SMALLINT NOT NULL,
     "status_name" VARCHAR(40) NOT NULL,
     "description" TEXT NULL,
@@ -160,3 +162,12 @@ ALTER TABLE
 ALTER TABLE
     "payment" ADD CONSTRAINT "payment_client_id_foreign" FOREIGN KEY("client_id") REFERENCES "client"("id");
 
+-- Adding CASCADE option to foreign key constraints
+ALTER TABLE "payment" DROP CONSTRAINT IF EXISTS "payment_client_id_foreign";
+ALTER TABLE "payment" ADD CONSTRAINT "payment_client_id_foreign" FOREIGN KEY("client_id") REFERENCES "client"("id") ON DELETE CASCADE;
+
+ALTER TABLE "transaction" DROP CONSTRAINT IF EXISTS "transaction_client_id_foreign";
+ALTER TABLE "transaction" ADD CONSTRAINT "transaction_client_id_foreign" FOREIGN KEY("client_id") REFERENCES "client"("id") ON DELETE CASCADE;
+
+ALTER TABLE "payment_method" DROP CONSTRAINT IF EXISTS "payment_method_client_id_foreign";
+ALTER TABLE "payment_method" ADD CONSTRAINT "payment_method_client_id_foreign" FOREIGN KEY("client_id") REFERENCES "client"("id") ON DELETE CASCADE;

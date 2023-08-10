@@ -1,28 +1,23 @@
 import { useEffect, useState } from 'react'
 import { routes } from '@/data/dict/routes_dict'
 // Store
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { getDataCollegian } from '@/store/slices/collegianReducer'
 import { getDataClient } from '@/store/slices/clientSlice'
 import { getAccessToken } from '@/store/slices/authSlice'
-import { 
-    getDataPayment,
-} from '@/store/slices/paymentSlice'
 // Components
 import LabelSelectShortValue from '@/components/LabelSelectShortValue'
 import LayoutMain from '@/components/layouts/main'
-import AccordionPaymentMethod from '@/components/admin/payment/AccordionPaymentMethod'
 import PrepareDataStore from '@/components/store/PrepareDataStore'
 import { message } from 'antd'
 // Others
-import { PaymentMethodInterface } from '@/interfaces/payment'
 import { CollegianObjectInterface } from '@/interfaces/collegian'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { useRouter } from 'next/router'
 import { ClientInterface } from '@/interfaces/client'
-import { convertSectionLetterToNum, convertSectionNumStrToLetter, section_dict } from '@/data/dict/section_dict'
+import { convertSectionLetterToNum, convertSectionNumStrToLetter } from '@/data/dict/section_dict'
 import { ClientServices } from '@/services/api/client'
 import { timerSwal } from '@/utils/sweetAlert'
 import TransactionBox from '@/components/budget/TransactionBox'
@@ -39,9 +34,6 @@ const swal = withReactContent(Swal)
 
 export default function ClientManagePage() {
 
-    const router = useRouter()
-
-    const [messageApi, contextHolder] = message.useMessage()
     // Stores 
     const accessToken = useSelector((state: RootState) => getAccessToken(state))
     const dataClient = useSelector((state: RootState) => getDataClient(state))
@@ -115,7 +107,6 @@ export default function ClientManagePage() {
     
     return (
         <>
-            { contextHolder }
 
             <PrepareDataStore
                 needDataNow
@@ -170,6 +161,10 @@ export default function ClientManagePage() {
                             : currentSectionSelected.toLocaleLowerCase() === 'other'
                             ? 'ตอนเรียน อื่น ๆ' : `ตอนเรียน ${currentSectionSelected}`
                         }
+                        <br />
+                        <span className={`text-black/60 text-sm tracking-wide`}>
+                            {`( หากมีการทำเปลี่ยนบทบาท หรือ อนุมัติผู้ใช้ ต้องเลือกตัวกรองใหม่อีกครั้ง )`}
+                        </span>
                     </div>
 
 

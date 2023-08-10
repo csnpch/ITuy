@@ -22,8 +22,6 @@ import { TnxServices } from '@/services/api/transaction'
 import { transactionInterface } from '@/interfaces/transaction'
 import Moment from 'react-moment'
 import 'moment-timezone'
-import Link from 'next/link'
-import configs from '@/configs'
 import ModalViewTnx from '@/components/budget/ModalViewTnx'
 import { moneyFormat } from '@/utils/helpers/functions'
 
@@ -75,7 +73,6 @@ export default function Budget() {
             const res: any = await TnxServices.getTnxApprove(accessToken, 1)
             setDataTnx(res.data.transactions)
             const resRealBudget: any = await PaymentServices.getRealBudget(accessToken)
-            console.log('resRealBudget', resRealBudget)
             setRealBudget(resRealBudget.data)
         } catch (_: any) {
             timerSwal({
@@ -277,7 +274,7 @@ export default function Budget() {
                                                 <p className={`text-secondary-text text-sm`}
                                                     style={{ lineHeight: '1.5rem' }}
                                                 >
-                                                    ยังไม่มีธุรกรรมสาขา
+                                                    - ยังไม่มีธุรกรรมสาขา -
                                                 </p>
                                             </div>
                                         )

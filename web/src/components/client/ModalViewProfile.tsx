@@ -100,6 +100,14 @@ export default function ModalViewProfile({
                             disableItemsCenter
                         />
                         <ColTitleValue
+                            label={'บทบาท'}
+                            labelClassName="text-blue-800"
+                            valueClassName="text-black/80"
+                            value={getRoleNameByStatus(client?.role || null)}
+                            className="w-full gap-y-0"
+                            disableItemsCenter
+                        />
+                        <ColTitleValue
                             label={'วันที่เข้าร่วม'}
                             labelClassName="text-blue-800"
                             valueClassName="text-black/80"
@@ -111,6 +119,10 @@ export default function ModalViewProfile({
                             className="w-full gap-y-0"
                             disableItemsCenter
                         />
+                        <Button
+                        >
+                            เปลี่ยนรหัสผ่าน
+                        </Button>
                     </div>
 
                     <p className="text-xs text-center mt-4 text-black/60">- หากต้องการแก้ไขข้อมูล -</p>

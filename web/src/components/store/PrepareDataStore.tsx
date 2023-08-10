@@ -63,15 +63,8 @@ export default function PrepareDataStore({
 
 
     useEffect(() => {
-        console.log('prepare data store')
         fetchData()
-        setTimeout(() => { console.log('store', store.getState()) }, 500)
     }, [])
-
-    
-    useEffect(() => {
-        console.log('statusPrepareData', statusPrepareData);
-    }, [statusPrepareData]);
 
 
     const fetchData = async () => {

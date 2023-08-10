@@ -1,15 +1,10 @@
-import configs from "@/configs"
 import { ClientInterface } from "@/interfaces/client"
-import { moneyFormat } from "@/utils/helpers/functions"
 import { Button } from "@mui/material"
 import { Modal } from "antd"
-import Link from "next/link"
 import ColTitleValue from "@/components/ColLabelValue"
-import RowTiteValue from "@/components/RowLabelValue"
 import Moment from "react-moment"
 import 'moment-timezone'
 import { swal, timerSwal } from "@/utils/sweetAlert"
-import { ClientServices } from "@/services/api/client"
 import { AuthServices } from "@/services/api/auth"
 import { useSelector } from "react-redux"
 import { RootState } from "@/store"
@@ -17,7 +12,7 @@ import { getAccessToken } from "@/store/slices/authSlice"
 import { useRouter } from "next/router"
 import { routes } from "@/data/dict/routes_dict"
 import { convertSectionNumStrToLetter } from "@/data/dict/section_dict"
-import { getRoleNameByStatus, levels, roles } from "@/data/dict/role_dict"
+import { getRoleNameByStatus, roles } from "@/data/dict/role_dict"
 import { getDataClient } from "@/store/slices/clientSlice"
 
 
@@ -222,7 +217,7 @@ export default function ModalViewClient({
                                 label={'บทบาท'}
                                 labelClassName="text-blue-800"
                                 valueClassName="text-black/80"
-                                value={getRoleNameByStatus(client?.role || null)}
+                                value={`${getRoleNameByStatus(client?.role)}`}
                                 className="w-full gap-y-0"
                                 disableItemsCenter
                             />

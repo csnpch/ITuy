@@ -51,9 +51,6 @@ const addBill = async (
     accessToken: string|null, 
     dataForm: formAddBillInterface
 ) => {
-    
-    console.log('dataForm', dataForm)
-
     return await axios.post(
         `${baseURL}/`, { ...dataForm },
         await axiosConfig(accessToken)
