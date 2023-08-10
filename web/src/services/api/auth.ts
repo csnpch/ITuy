@@ -40,10 +40,19 @@ const signIn = async (username: string, password: string): Promise<object> => {
 }
 
 
+const changePassword = async (accessToken: string, old_password: string, new_password: string) => {
+    return await axios.post(`${baseURL}/changePassword`, {
+        old_password: old_password,
+        new_password: new_password
+    }, await axiosConfig(accessToken))
+}
+
+
 export const AuthServices = {
     requestAccount,
     acceptAccount,
     verifyAccessToken,
     signIn,
+    changePassword
 }
 

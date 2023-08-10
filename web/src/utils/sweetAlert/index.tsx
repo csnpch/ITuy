@@ -22,7 +22,7 @@ export const swal = withReactContent(Swal)
 export const timerSwal = ({
     icon = 'success', 
     title,
-    subTitle,
+    subTitle = '',
     timer = 1500,
     classes
 }: timerInterface) => {

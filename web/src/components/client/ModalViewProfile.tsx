@@ -1,8 +1,7 @@
 import configs from "@/configs"
 import { ClientInterface } from "@/interfaces/client"
 import { moneyFormat } from "@/utils/helpers/functions"
-import { Button } from "@mui/material"
-import { Modal } from "antd"
+import { Modal, Button } from "antd"
 import Link from "next/link"
 import ColTitleValue from "@/components/ColLabelValue"
 import RowTiteValue from "@/components/RowLabelValue"
@@ -20,8 +19,9 @@ import { getRoleNameByStatus, levels, roles } from "@/data/dict/role_dict"
 import { getDataClient } from "@/store/slices/clientSlice"
 import mock_img_profile from '@/assets/imgs/mock_img_profile.svg'
 import Image from "next/image"
-import { BsPencil } from "react-icons/bs"
+import { AiOutlineCloseCircle } from "react-icons/ai"
 import { useState } from "react"
+import ModalChangePwd from './ModalChangePwd'
 
 
 interface propsModalViewProfile {
@@ -46,26 +46,47 @@ export default function ModalViewProfile({
     const dataClient = useSelector((state: RootState) => getDataClient(state))
     // states
     const [onEdit, setOnEdit] = useState<boolean>(false)
+    const [modalChangePwd, setModalChangePwd] = useState<boolean>(false)
 
 
     return (
         <>
+
+
+            <ModalChangePwd 
+                prevModalState={modalState}
+                modalState={{
+                    isOpen: modalChangePwd,
+                    setOpen: setModalChangePwd
+                }}
+                client={dataClient}
+            />
+
 
             <Modal
                 title='' 
                 open={modalState.isOpen} 
                 centered
                 closable={false}
-                onCancel={() => modalState.setOpen(false)}
+                onCancel={() => {
+                    modalState.setOpen(false)
+                }}
                 footer={null}
                 className={`my-10`}
             >
-                <div className={`font_kanit flex-center flex-col`}>
-                    <Image
-                        src={mock_img_profile}
-                        alt="#"
-                        className="mt-4"
-                    />
+                <div className={`font_kanit relative`}>
+                    <div 
+                        onClick={() => modalState.setOpen(false)}
+                        className={`absolute right-0 top-0 text-2xl text-black/50 cursor-pointer hover:text-black rounded-full flex-center`}>
+                        <AiOutlineCloseCircle />
+                    </div>
+                      <div className={`w-full flex-center`}>
+                        <Image
+                            src={mock_img_profile}
+                            alt="#"
+                            className="mt-4 mx-auto"
+                        />
+                    </div>
                     <div className="px-2 w-full flex flex-col gap-y-4 mt-7">
                         <ColTitleValue
                             label={'ชื่อผู้ใช้งาน / รหัสนักศึกษา'}
@@ -103,7 +124,7 @@ export default function ModalViewProfile({
                             label={'บทบาท'}
                             labelClassName="text-blue-800"
                             valueClassName="text-black/80"
-                            value={getRoleNameByStatus(client?.role || null)}
+                            value={getRoleNameByStatus(client.role)}
                             className="w-full gap-y-0"
                             disableItemsCenter
                         />
@@ -120,6 +141,11 @@ export default function ModalViewProfile({
                             disableItemsCenter
                         />
                         <Button
+                            className='mt-1 mb-2 font_kanit'
+                            onClick={() => {
+                                modalState.setOpen(false)
+                                setModalChangePwd(true)
+                            }}
                         >
                             เปลี่ยนรหัสผ่าน
                         </Button>
