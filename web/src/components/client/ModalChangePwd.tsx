@@ -9,14 +9,14 @@ import Moment from "react-moment"
 import 'moment-timezone'
 import { swal, timerSwal } from "@/utils/sweetAlert"
 import { AuthServices } from "@/services/api/auth"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store"
-import { getAccessToken } from "@/store/slices/authSlice"
+import { getAccessToken, setAccessToken, setStatusVerifyAuth } from "@/store/slices/authSlice"
 import { useRouter } from "next/router"
 import { routes } from "@/data/dict/routes_dict"
 import { convertSectionNumStrToLetter } from "@/data/dict/section_dict"
 import { getRoleNameByStatus, levels, roles } from "@/data/dict/role_dict"
-import { getDataClient } from "@/store/slices/clientSlice"
+import { getDataClient, setDataClient } from "@/store/slices/clientSlice"
 import mock_img_profile from '@/assets/imgs/mock_img_profile.svg'
 import Image from "next/image"
 import { AiOutlineCloseCircle } from "react-icons/ai"
@@ -45,6 +45,7 @@ export default function ModalChangePwd({
 }: propsModalChangePwd) {
     
     const router = useRouter()
+    const dispatch = useDispatch()
 
     const [form, setForm] = useState({
         old_password: '',
@@ -89,17 +90,12 @@ export default function ModalChangePwd({
 
 
     const onSignOut = () => {
-
         AuthLocalStorage.removeAccessToken()
         ClientLocalStorage.removeDataClient();
 
         dispatch(setAccessToken(null))
         dispatch(setStatusVerifyAuth(false))
         dispatch(setDataClient(null))
-
-        statusAskSignOut.setOpen(false)
-        openMessageNoti(messageApi, 'success', ` ออกจากระบบสำเร็จ`)
-        setTimeout(() => { router.push(routes.home.path) }, 1000)
     }
 
 
@@ -126,7 +122,7 @@ export default function ModalChangePwd({
         }
 
         try {
-            const res = await AuthServices.changePassword(accessToken, form.old_password, form.new_password)
+            const res: any = await AuthServices.changePassword(accessToken || '', form.old_password, form.new_password)
             console.log('res', res)
             if (res.status === 200) {
                 modalState.setOpen(false)
@@ -134,6 +130,7 @@ export default function ModalChangePwd({
                     icon: 'success',
                     title: res.message || 'เปลี่ยนรหัสผ่านสำเร็จ',
                 })
+                onSignOut()
                 window.location.href = '/auth'
                 return
             } else {

@@ -124,7 +124,7 @@ export default function ModalViewProfile({
                             label={'บทบาท'}
                             labelClassName="text-blue-800"
                             valueClassName="text-black/80"
-                            value={getRoleNameByStatus(client.role)}
+                            value={getRoleNameByStatus(client?.role)}
                             className="w-full gap-y-0"
                             disableItemsCenter
                         />
