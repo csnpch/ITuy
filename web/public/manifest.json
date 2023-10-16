@@ -1,10 +1,10 @@
 {
-    "theme_color": "#f69435",
-    "background_color": "#f69435",
+    "theme_color": "#444",
+    "background_color": "#fff",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "Next PWA Testder",
+    "name": "ITuy",
     "short_name": "ITuy",
     "description": "T_T",
     "icons": [

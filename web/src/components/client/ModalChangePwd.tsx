@@ -123,7 +123,7 @@ export default function ModalChangePwd({
 
         try {
             const res: any = await AuthServices.changePassword(accessToken || '', form.old_password, form.new_password)
-            console.log('res', res)
+            // console.log('res', res)
             if (res.status === 200) {
                 modalState.setOpen(false)
                 timerSwal({

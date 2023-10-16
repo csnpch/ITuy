@@ -75,7 +75,7 @@ export default function BudgetPayment() {
     const sumTotalAmount = async () => {
         let total: string = '0' // Initialize as a string
         dataPayment.forEach((item: PaymentDetectInterface) => {
-          console.log(item.amount)
+        //   console.log(item.amount)
           total = String(Number(total) + Number(item.amount)) // Convert total to number and add item.amount
         })
         setTotalAmount(Number(total)) // Convert total back to number
@@ -109,7 +109,7 @@ export default function BudgetPayment() {
         const getListPaymentID = async () => {
             let paymentIDs: string[] = []
             dataPayment.forEach((item: PaymentDetectInterface) => {
-                console.log(item)
+                // console.log(item)
                 paymentIDs.push(item.payment_id)
             })
             return paymentIDs

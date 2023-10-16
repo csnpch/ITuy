@@ -3,7 +3,7 @@ const config = require('./../../configs')
 // status
 const uploadDict = {
     slip: {
-        path: config.env.PATH_UPLOADS
+        path: 'images/slip/'
     }
 }
 

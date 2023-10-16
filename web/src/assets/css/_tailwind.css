@@ -1735,10 +1735,6 @@ body {
     margin-top: 3.5rem !important
   }
 
-  .xl\:w-5\/12 {
-    width: 41.666667% !important
-  }
-
   .xl\:w-6\/12 {
     width: 50% !important
   }
@@ -1751,12 +1747,24 @@ body {
     width: 100% !important
   }
 
-  .xl\:max-w-\[18rem\] {
-    max-width: 18rem !important
+  .xl\:w-5\/12 {
+    width: 41.666667% !important
   }
 
   .xl\:max-w-\[20rem\] {
     max-width: 20rem !important
+  }
+
+  .xl\:max-w-\[14rem\] {
+    max-width: 14rem !important
+  }
+
+  .xl\:max-w-\[16rem\] {
+    max-width: 16rem !important
+  }
+
+  .xl\:max-w-\[18rem\] {
+    max-width: 18rem !important
   }
 
   .xl\:grid-cols-\[1\.2rem_1fr\] {
@@ -1780,6 +1788,10 @@ body {
 @media (min-width: 1536px) {
   .\32xl\:w-4\/12 {
     width: 33.333333% !important
+  }
+
+  .\32xl\:w-6\/12 {
+    width: 50% !important
   }
 
   .\32xl\:px-6 {

@@ -1,3 +1,6 @@
+const fs = require('fs')
+const path = require('path')
+
 const db = require('./../../database')
 const dbDict = require('./../../database/dictonary')
 const paymentMethodDict = require('./../../data/dict/payment_method')
@@ -12,6 +15,7 @@ const billService = require('./billService')
 const mailService = require('./emailServices')
 const config = require('../../configs')
 
+
 const tableBill = dbDict.tableNames.bill
 const tablePayment = dbDict.tableNames.payment
 const tablePaymentMethod = dbDict.tableNames.payment_method
@@ -24,11 +28,7 @@ const uploadSlip = async (file, body) => {
     const checkHaveOldSlipThenDelete = async (payment_id) => {
         try {
             const payment = await (await findById(payment_id)).rows[0]
-            const fs = require('fs')
-            const path = require('path')
-            const pathFile = `${payment.img_evidence}`
-            // const pathFile = path.join(__dirname, `${uploadDict.slip}${payment.img_evidence}`)
-            console.log('pathFileUpload', pathFile)
+            const pathFile = path.join(__dirname, `./../../uploads/${payment.img_evidence}`)
             fs.unlink(pathFile, (err) => {
                 if (err) {
                     console.error(err)
@@ -85,6 +85,8 @@ const uploadSlip = async (file, body) => {
     }
 
 }
+
+
 
 
 const getRealBudget = async () => {
@@ -622,8 +624,6 @@ const countPaymentStatus = async (bill_id, status, yearStd = null, sectionStd = 
             AND ${tablePayment}.status ${tmpQueryVar2}
     `, listValue)
 }
-
-
 
 
 module.exports = {
