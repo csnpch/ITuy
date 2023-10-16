@@ -1,19 +1,26 @@
-FROM node:18.16-buster-slim
+# Use the official Node.js 18.12.1 image as the base
+FROM node:18-alpine
 
-# Create app directory
-WORKDIR /usr/src/app
+# Set the working directory inside the container
+WORKDIR /app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+# Copy the package.json and yarn.lock files to the working directory
+COPY package.json yarn.lock ./
 
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --omit=dev
+# Install project dependencies
+RUN npm install --frozen-lockfile
 
-# Bundle app source
+# Copy the entire project directory to the container
 COPY . .
 
+# Change the working directory to the "api" directory
+WORKDIR /app/api-gateway
+
+# Build the node application
+RUN npm install
+
+# Expose the desired port (default is 4000)
 EXPOSE 4000
-CMD [ "node", "index.js" ]
+
+# Start the index.js application
+CMD ["node", "index.js"]

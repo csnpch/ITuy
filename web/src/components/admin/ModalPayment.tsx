@@ -185,7 +185,7 @@ export default function ModalPayment({
                                                         {
                                                             item.status_payment === paymentDict.callback.status && 
                                                             <Link
-                                                                href={`${configs.ITuy_API}/${item.img_evidence}`} 
+                                                                href={`${configs.ITuy_API}${item.img_evidence}`} 
                                                                 target='_blank'
                                                             >
                                                                 <div 

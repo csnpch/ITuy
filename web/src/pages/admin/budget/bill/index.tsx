@@ -27,6 +27,7 @@ export default function assignBill() {
     const [addBill, setAddBill] = useState<boolean>(false)
     const [messageApi, contextHolder] = message.useMessage()
     
+    
     const onSubmitFormModalAddBill = async (typeAction: string, dataForm: formAddBillInterface) => {
         if (typeAction === 'insert') {
             await BillServices.addBill(accessToken, dataForm)
@@ -49,6 +50,7 @@ export default function assignBill() {
                 })
         }
     }
+
 
     const triggerResetFormAddBill = () => { }
 

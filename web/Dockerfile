@@ -8,16 +8,19 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 
 # Install project dependencies
-RUN yarn install --frozen-lockfile
+RUN npm install --frozen-lockfile
 
 # Copy the entire project directory to the container
 COPY . .
 
+# Change the working directory to the "web" directory
+WORKDIR /app/web
+
 # Build the Next.js application
-RUN yarn build
+RUN npm run build
 
 # Expose the desired port (default is 3000)
 EXPOSE 3000
 
 # Start the Next.js application
-CMD ["yarn", "start"]
+CMD ["npm", "start"]

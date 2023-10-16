@@ -49,12 +49,12 @@ export default function ModalViewSlip({
 
 
                     <Link
-                        href={`${configs.ITuy_API}/${payment?.img_evidence}`}
+                        href={`${configs.ITuy_API}${payment?.img_evidence}`}
                         className={`mt-2 h-[16rem]`}
                         target='_blank'
                     >
                         <img
-                            src={`${configs.ITuy_API}/${payment?.img_evidence}`} alt=''
+                            src={`${configs.ITuy_API}${payment?.img_evidence}`} alt=''
                             className={`
                                 select-none w-full h-full object-cover object-center
                             `}

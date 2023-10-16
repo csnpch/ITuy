@@ -26,7 +26,9 @@ const uploadSlip = async (file, body) => {
             const payment = await (await findById(payment_id)).rows[0]
             const fs = require('fs')
             const path = require('path')
-            const pathFile = path.join(__dirname, `./../../uploads/${payment.img_evidence}`)
+            const pathFile = `${payment.img_evidence}`
+            // const pathFile = path.join(__dirname, `${uploadDict.slip}${payment.img_evidence}`)
+            console.log('pathFileUpload', pathFile)
             fs.unlink(pathFile, (err) => {
                 if (err) {
                     console.error(err)

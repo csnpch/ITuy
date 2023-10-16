@@ -6,7 +6,8 @@
   "scripts": {
     "dev:front": "cd ./web && yarn dev:full",
     "dev:back": "cd ./api-gateway && yarn dev",
-    "dev:full": "start cmd /k yarn dev:front && yarn dev:back"
+    "dev:full": "start cmd /k yarn dev:front && yarn dev:back",
+    "dev:full:mac": "concurrently \"yarn dev:front\" \"yarn dev:back\""
   },
   "dependencies": {
     "react-pwa-install-prompt": "^1.0.5"

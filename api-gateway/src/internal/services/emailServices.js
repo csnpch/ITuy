@@ -10,6 +10,8 @@ const transporter = nodemailer.createTransport({
     }
 })
 
+// console.log('transporter', transporter)
+
 
 // let mailOptions = 
 const createMailOptions = (to, subject, html = ``) => {
@@ -46,9 +48,6 @@ const sendMail = ({
     })
 
 }
-
-
-
 
 
 

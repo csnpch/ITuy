@@ -26,6 +26,8 @@ const getBills = async (req, res) => {
             sectionStd = null
         } = req.query;
 
+
+        // try {
         const result = req.params.id 
             ? await (await billService.findById(
                 req.params.id,
@@ -38,16 +40,25 @@ const getBills = async (req, res) => {
                 yearStd === 'all' ? null : yearStd,
                 sectionStd === 'all' ? null : sectionStd
             ))
+            if (!result) {
+                return res.status(200).json({
+                    status: false,
+                    status_tag: 'error',
+                    message: 'ไม่พบข้อมูลข้อมูลบิลเรียกเก็บเงิน',
+                    data: [],
+                    pagination: null
+                })
+            }
+        // } catch (err) {
+        //     return res.status(200).json({
+        //         status: false,
+        //         status_tag: 'error',
+        //         message: 'ไม่พบข้อมูลข้อมูลบิลเรียกเก็บเงิน',
+        //         data: [],
+        //         pagination: null
+        //     })
+        // }
 
-        if (!result) {
-            return res.status(200).json({
-                status: false,
-                status_tag: 'error',
-                message: 'ไม่พบข้อมูลข้อมูลบิลเรียกเก็บเงิน',
-                data: null,
-                pagination: null
-            })
-        }
         
         return res.status(200).json({
             status: true,

@@ -12,6 +12,7 @@ const config = {
         JWT_SECRET: process.env.JWT_SECRET || undefined,
         JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || undefined,
         YEARS_HISTORICAL_DATA: process.env.YEARS_HISTORICAL_DATA || undefined,
+        PATH_UPLOADS: process.env.PATH_UPLOADS || undefined,
 
         DB_HOST: process.env.DB_HOST || "localhost",
         DB_PORT: process.env.DB_PORT || 5432,

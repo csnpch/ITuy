@@ -275,12 +275,19 @@ export default function AccordionReportBill({
 
             </div>
 
-            <Pagination 
-                className={`mt-4`} 
-                pageCount={paginationBill?.pageSize || 1}
-                currentPage={paginationBill?.currentPage || 1}
-                onPage={(onPage) => handleChangePage(onPage)}
-            />
+            {
+                (dataBill && dataBill.length >  0)
+                ? <Pagination 
+                    className={`mt-4`} 
+                    pageCount={paginationBill?.pageSize || 1}
+                    currentPage={paginationBill?.currentPage || 1}
+                    onPage={(onPage) => handleChangePage(onPage)}
+                />
+                : <p className='text-sm text-center mt-6'>
+                    - ไม่มีรายการบิลเรียกเก็บเงิน -
+                </p>
+            }
+
         </>
     )
 }

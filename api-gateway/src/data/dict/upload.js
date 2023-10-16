@@ -3,7 +3,7 @@ const config = require('./../../configs')
 // status
 const uploadDict = {
     slip: {
-        path: config.env.ENV === 'production' ? '/usr/src/ituy/uploads/slips/' : 'images/slip/'
+        path: config.env.PATH_UPLOADS
     }
 }
 

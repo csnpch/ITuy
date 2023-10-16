@@ -153,12 +153,12 @@ export default function ModalVerifyPayment({
 
 
                     <Link 
-                        href={`${configs.ITuy_API}/${recipient?.img_evidence}`}
+                        href={`${configs.ITuy_API}${recipient?.img_evidence}`}
                         className={`mt-2 h-[16rem]`}
                         target='_blank'
                     >
                         <img
-                            src={`${configs.ITuy_API}/${recipient?.img_evidence}`} alt=''
+                            src={`${configs.ITuy_API}${recipient?.img_evidence}`} alt=''
                             className={`
                                 select-none w-full h-full object-cover object-center
                             `}

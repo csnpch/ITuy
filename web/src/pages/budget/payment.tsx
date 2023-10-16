@@ -176,7 +176,7 @@ export default function BudgetPayment() {
                     ?
                     <>Loading...</>
                     :
-                    <div className={`w-full 2xl:w-4/12 xl:w-6/12 mx-auto`}>
+                    <div className={`w-full 2xl:w-4/12 xl:w-5/12 mx-auto`}>
 
                         {/* Container content */}
                         <div className={`
@@ -190,7 +190,7 @@ export default function BudgetPayment() {
                             `}>
                                 
                                 {/* QR CODE Container */}
-                                <div className={`w-8/12 mx-auto`}>
+                                <div className={`w-8/12 xl:w-full xl:max-w-[18rem] mx-auto`}>
                                 
                                     <MUI_Button
                                         variant="contained"
@@ -204,7 +204,7 @@ export default function BudgetPayment() {
                                     </MUI_Button>
                                 
                                     <div className={`w-full`}>
-                                        <img 
+                                        <img
                                             src={promptpayBanner.src} alt=''
                                             className={`
                                                 select-none wh-full object-cover
@@ -212,16 +212,24 @@ export default function BudgetPayment() {
                                         />
                                         {/* QR CODE IMAGE */}
                                         {
-                                            valueQRcode === '' ?
-                                            <Skeleton.Image 
-                                                active={true} 
+                                            (valueQRcode === '') ?
+                                            <Skeleton.Image
+                                                active={true}
                                                 className={`w-full h-64`}
                                             />
                                             :
-                                            <QRCode 
-                                                value={valueQRcode}
-                                                className='wh-full shadow-md'
-                                            />
+                                            (
+                                                dataPaymentMethod?.method_identity 
+                                                ?
+                                                <QRCode
+                                                    value={valueQRcode}
+                                                    className='wh-full shadow-md'
+                                                />
+                                                :
+                                                <p className='text-center text-sm text-red-700 mt-4'>
+                                                    ไม่พบช่องทางชำระเงินสำหรับปีคุณ !<br />โปรดติดต่อทีมบริหารเพื่อเพิ่มช่องทางชำระเงิน
+                                                </p>
+                                            )
                                         }
                                     </div>
 
@@ -300,7 +308,7 @@ export default function BudgetPayment() {
                                     </MUI_Button>
 
                                 </div>
-                                    
+                            
                             </div>
                         </div>
 
