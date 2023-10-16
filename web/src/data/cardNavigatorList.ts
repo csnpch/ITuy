@@ -5,6 +5,9 @@ import { dataCardNavigator } from './../interfaces/data';
 import ImageMoney from '@/assets/imgs/money.webp'
 import ImageFood from '@/assets/imgs/food.webp'
 import ImageMap from '@/assets/imgs/map.webp'
+import ImageMap2 from '@/assets/imgs/map2.webp'
+import ImageMap3 from '@/assets/imgs/map3.webp'
+import ImageMap4 from '@/assets/imgs/map4.webp'
 import ImageDocs from '@/assets/imgs/documents.webp'
 import ImageBoard from '@/assets/imgs/board_of_directors.webp'
 
@@ -22,8 +25,8 @@ export const cardNavigatorList: dataCardNavigator[] = [
     // Location
     {
         title: routes.location.title.th,
-        pathImgs: [ ImageFood, ImageMap ],
-        pathLink: routes.location.path,
+        pathImgs: [ ImageFood, ImageMap2, ImageMap3, ImageMap4 ],
+        pathLink: 'https://google.com',
         slug: `location`,
         statusActive: routes.location.statusActive,
         routeProtectLevel: routes.location.routeProtectLevel

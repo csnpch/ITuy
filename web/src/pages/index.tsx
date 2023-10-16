@@ -51,13 +51,15 @@ export default function Home() {
             return
         }
 
-        if (
-            (route.slug !== 'home' && route.slug !== 'auth') 
-            && (!statusVerifyAuth || !verifyRouter(route.routeProtectLevel, dataClient?.role))
-        ) {
-            openMessageNoti(messageApi, 'error', ` เนื้อหานี้จำเป็นต้องเข้าสู่ระบบก่อน`)
-            setModalAskToAuth(true)
-            return
+        if (route.routeProtectLevel !== false) {
+            if (
+                (route.slug !== 'home' && route.slug !== 'auth') 
+                && (!statusVerifyAuth || !verifyRouter(route.routeProtectLevel, dataClient?.role))
+            ) {
+                openMessageNoti(messageApi, 'error', ` เนื้อหานี้จำเป็นต้องเข้าสู่ระบบก่อน`)
+                setModalAskToAuth(true)
+                return
+            }
         }
         
         router.push(route.pathLink)

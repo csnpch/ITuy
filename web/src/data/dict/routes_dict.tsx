@@ -96,10 +96,10 @@ export const routes: routesInterface = {
             en: `Recommended spots near Univ`
         },
         slug: `location`,
-        path: `/location`,
+        path: 'https://ituy-location.pages.dev',
         icon: (className) => (<SlLocationPin className={`${className}`} />),
-        routeProtectLevel: levels,
-        statusActive: false,
+        routeProtectLevel: false,
+        statusActive: true,
         statusShowOnSidebar: true
     },
     board: {
