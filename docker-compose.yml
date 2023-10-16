@@ -19,8 +19,6 @@ services:
       dockerfile: ./api-gateway/Dockerfile
     ports:
       - 4000:4000
-    volumes:
-      - ituy_server_data:/usr/src/ituy/uploads
     networks:
       - ituy_network
     # environment:
@@ -29,6 +27,3 @@ services:
       
 networks:
   ituy_network:
-
-volumes:
-  ituy_server_data:
