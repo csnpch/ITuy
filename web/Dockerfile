@@ -17,6 +17,7 @@ COPY . .
 WORKDIR /app/web
 
 # Build the Next.js application
+RUN npm install next
 RUN npm run build
 
 # Expose the desired port (default is 3000)

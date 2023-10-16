@@ -1,1 +1,5 @@
 /z_resource/database
+/api-gateway/.env
+./api-gateway/.env
+/*/**/.env
+**/.env
