@@ -51,7 +51,7 @@ export default function Home() {
             return
         }
 
-        if (route.routeProtectLevel !== false) {
+        if (route.routeProtectLevel !== null) {
             if (
                 (route.slug !== 'home' && route.slug !== 'auth') 
                 && (!statusVerifyAuth || !verifyRouter(route.routeProtectLevel, dataClient?.role))

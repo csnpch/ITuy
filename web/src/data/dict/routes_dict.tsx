@@ -98,7 +98,7 @@ export const routes: routesInterface = {
         slug: `location`,
         path: 'https://ituy-location.pages.dev',
         icon: (className) => (<SlLocationPin className={`${className}`} />),
-        routeProtectLevel: false,
+        routeProtectLevel: null,
         statusActive: true,
         statusShowOnSidebar: true
     },
