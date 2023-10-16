@@ -6,5 +6,5 @@ export interface dataCardNavigator {
     pathLink: string,
     slug: string,
     statusActive: boolean,
-    routeProtectLevel: (number | null)[]
+    routeProtectLevel: (number | null)[]|null
 }

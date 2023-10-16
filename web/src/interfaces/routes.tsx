@@ -9,7 +9,7 @@ export interface dataRoutesInterface {
     icon: (className?: string) => JSX.Element,
     statusActive: boolean,
     statusShowOnSidebar?: boolean,
-    routeProtectLevel: (number | null)[],
+    routeProtectLevel: (number | null)[]|null,
     ignoreProtect?: boolean,
     staffOnly?: boolean,
 }
