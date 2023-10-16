@@ -243,7 +243,13 @@ export default function ModalPayment({
                     </div>
                     {
                         verifyRouter(
-                            routes.admin_budget_payment.routeProtectLevel || [], 
+                            routes.admin_budget_payment.routeProtectLevel || [
+                                roles.guest.level,
+                                roles.member.level,
+                                roles.chairman.level,
+                                roles.admin.level,
+                                roles.secretary.level
+                            ], 
                             clientRole
                         ) && <>
                             {

@@ -62,7 +62,13 @@ export default function Sidebar({ statusSidebar, statusAskSignOut }: props) {
 
         if (
             route.slug !== 'auth' 
-            && (!statusVerifyAuth || !verifyRouter(route.routeProtectLevel || [], dataClient?.role))
+            && (!statusVerifyAuth || !verifyRouter(route.routeProtectLevel || [
+                roles.guest.level,
+                roles.member.level,
+                roles.chairman.level,
+                roles.admin.level,
+                roles.secretary.level
+            ], dataClient?.role))
         ) {
             openMessageNoti(messageApi, 'error', ` เนื้อหานี้จำเป็นต้องเข้าสู่ระบบก่อน`)
             statusSidebar.setOpen(false)

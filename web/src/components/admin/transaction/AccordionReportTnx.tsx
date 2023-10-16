@@ -277,13 +277,15 @@ export default function AccordionReportTnx({
                 }
 
                 {
-                    dataTnx &&
+                    (dataTnx && dataTnx.length > 0) ?
                     <Pagination 
                         className={`mt-4`} 
                         pageCount={paginateTnx?.pageSize || 1}
                         currentPage={paginateTnx?.currentPage || 1}
                         onPage={(onPage) => handleChangePage(onPage)}
-                    />
+                    /> : <p className='text-sm text-center mt-6'>
+                        - ไม่มีข้อมูล -
+                    </p>
                 }
 
             </div>

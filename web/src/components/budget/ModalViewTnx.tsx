@@ -76,7 +76,7 @@ export default function ModalViewTnx({
                     </div>
 
                     <Link
-                        href={`${configs.ITuy_API}/${transaction?.link_evidence || ''}`}
+                        href={`${transaction?.link_evidence || '#'}`}
                         className={`mt-2 text-lg`}
                         target='_blank'
                     >
